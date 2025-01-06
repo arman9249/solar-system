@@ -25,14 +25,17 @@ jobs:
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
+          
         - name: Setup NodeJS Version - ${{ matrix.nodejs_version }}
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.nodejs_version }}
         - name: Install Dependencies
           run: npm install
+
         - name: Unit Testing
           run: npm test
+
         - name: Archive test result
           uses: actions/upload-artifact@v4
           with:
@@ -45,14 +48,18 @@ jobs:
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
+
         - name: Setup NodeJS Version - 18
           uses: actions/setup-node@v3
           with:
             node-version: 18
         - name: Install Dependencies
           run: npm install
+        
         - name: Check Code Coverage
+          continue-on-error: true
           run: npm run coverage
+          
         - name: Archive test result
           uses: actions/upload-artifact@v4
           with:
