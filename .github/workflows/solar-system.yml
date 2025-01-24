@@ -151,8 +151,6 @@ jobs:
     dev-deploy:
       needs: docker
       runs-on: ubuntu-latest
-      environment: 
-        name: development
       steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
